@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Problema - Variación de precios según el dólar y popularidad de consolas, videojuegos y accesorios",
   "type": "module",
-  "main": "src/index.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/Nojhze4/bit-backend#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "dotenv": "^17.0.1",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.1"
   },
   "devDependencies": {
     "morgan": "^1.10.0",
