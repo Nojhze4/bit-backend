@@ -8,7 +8,7 @@ const app = express()
 const host = process.env.HOST
 const port = process.env.PORT;
 
-// cambiar codigo de estado a usar
+
 app.get("/", (req, res) => {
     res.status(204).send();
 });
@@ -20,7 +20,6 @@ connectDB()
 // middlewares
 
 app.use(morgan("dev"));
-
 app.use(express.json());
 app.use("/games", gamesRouter);
 
@@ -28,6 +27,3 @@ app.listen(port, '0.0.0.0', () => {
   console.log(`server is running at ${host} on port ${port}`);
 });
 
-// jhramirez9716
-// Nl0OhikItZJKWrE8
-//
