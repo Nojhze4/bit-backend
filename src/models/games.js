@@ -16,7 +16,7 @@ const gameSchema = new Schema(
       type: String,
     },
 
-    enrolled: {
+    availability: {
       type: Boolean,
     },
   },
