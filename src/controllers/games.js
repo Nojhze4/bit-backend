@@ -38,37 +38,37 @@ const gamesController = {
   readOne: async (req, res) => {
     try {
       const { id } = req.params;
-      const games = await GameModel.findById(id);
-      if (!games) {
-        res.status(404).json({
+      const game = await GameModel.findById(id);
+      if (!game) {
+         res.status(404).json({
           allOK: false,
-          message: `Games with ID ${id} not found`,
-          data: error.message,
+          message: `Game with ID ${id} not found`,
+          data: null,
         });
       }
       res.status(200).json({
         allOK: true,
-        message: `Games with ID ${id} found`,
+        message: `Game with ID ${id} found`,
         data: game,
       });
     } catch (error) {
       res.status(500).json({
         allOK: false,
-        message: "Error restore game",
-        data: null,
+        message: "Error retrieving game",
+        data: error.message,
       });
     }
   },
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const { name, genre, age, console, enrolled } = req.body;
+      const { name, genre, launch, console, availability } = req.body;
       const gameUpdated = await GameModel.findByIdAndUpdate(id, {
         name,
         genre,
-        age,
+        launch,
         console,
-        enrolled,
+        availability,
       });
       if (!gameUpdated) {
         res.status(404).json({

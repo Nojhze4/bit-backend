@@ -17,7 +17,7 @@ const gameSchema = new Schema(
     },
 
     availability: {
-      type: Boolean,
+      type: String,
     },
   },
   { versionKey: false, timestamps: true }
