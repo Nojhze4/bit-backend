@@ -3,8 +3,8 @@ import GameModel from "../models/games.js";
 const gamesController = {
   create: async (req, res) => {
     try {
-      const { name, genre, age, console, availability } = req.body;
-      const newGame = new GameModel({ name, genre, age, console, availability });
+      const { name, genre, launch, console, availability } = req.body;
+      const newGame = new GameModel({ name, genre, launch, console, availability });
       const gameCreated = await newGame.save();
       res.status(201).json({
         allOK: true,

@@ -8,7 +8,7 @@ const gameSchema = new Schema(
     genre: {
       type: String,
     },
-    age: {
+    launch: {
       type: Date,
     },
 
