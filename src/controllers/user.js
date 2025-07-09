@@ -3,18 +3,18 @@ import GameModel from "../models/games.js";
 const gamesController = {
   create: async (req, res) => {
     try {
-      const { name, genre, launch, console, availability } = req.body;
-      const newGame = new GameModel({ name, genre, launch, console, availability });
-      const gameCreated = await newGame.save();
+      const { username, email, password } = req.body;
+      const newUser = new UserModel({ username, email, password });
+      const userCreated = await newUser.save();
       res.status(201).json({
         allOK: true,
-        message: "Game created successfully",
-        data: gameCreated,
+        message: "User created successfully",
+        data: userCreated,
       });
     } catch (error) {
       res.status(500).json({
         allOK: false,
-        message: "Error creating game",
+        message: "Error creating user",
         data: error.message,
       });
     }
@@ -25,13 +25,13 @@ const gamesController = {
       const games = await GameModel.find();
       res.status(200).json({
         allOK: true,
-        message: "All games retrieved successfully",
-        data: games,
+        message: "All users retrieved successfully",
+        data: users,
       });
     } catch (error) {
       res.status(500).json({
         allOK: false,
-        message: "Error retrieving games",
+        message: "Error retrieving users",
         data: error.message,
       });
     }
@@ -44,19 +44,19 @@ const gamesController = {
       if (!game) {
         return res.status(404).json({
           allOK: false,
-          message: `Game with ID ${id} not found`,
+          message: `User with ID ${id} not found`,
           data: null,
         });
       }
       res.status(200).json({
         allOK: true,
-        message: `Game with ID ${id} found`,
-        data: game,
+        message: `User with ID ${id} found`,
+        data: user,
       });
     } catch (error) {
       res.status(500).json({
         allOK: false,
-        message: "Error retrieving game",
+        message: "Error retrieving user",
         data: error.message,
       });
     }
@@ -94,23 +94,23 @@ const gamesController = {
       if (!gameDeleted) {
         return res.status(404).json({
           allOK: false,
-          message: `Game with ID ${id} not found`,
+          message: `User with ID ${id} not found`,
           data: null,
         });
       }
       res.status(200).json({
         allOK: true,
-        message: `Game with ID ${id} deleted successfully`,
+        message: `User with ID ${id} deleted successfully`,
         data: null,
       });
     } catch (error) {
       res.status(500).json({
         allOK: false,
-        message: "Error deleting game",
+        message: "Error deleting user",
         data: error.message,
       });
     }
   },
 };
 
-export default gamesController;
+export default usersController;
