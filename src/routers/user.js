@@ -1,6 +1,9 @@
 import { Router } from "express";
 const userRouter = Router();
 
+userRouter.post("/", (req, res) => {
+  res.json({ message: "POST /users endpoint works!" });
+});
 
 userRouter.get("/", (req, res) => {
   res.json({ message: "Users endpoint works!" });

@@ -4,20 +4,23 @@ const gameSchema = new Schema(
   {
     name: {
       type: String,
+      required: true,
     },
-    genre: {
+    consola: {
       type: String,
+      required: true,
     },
-    launch: {
-      type: Date,
-    },
-
-    console: {
+    genero: {
       type: String,
+      required: true,
     },
-
-    availability: {
+    descripcion: {
       type: String,
+      required: true,
+    },
+    precio: {
+      type: Number,
+      required: true,
     },
   },
   { versionKey: false, timestamps: true }

@@ -69,19 +69,19 @@ const gamesController = {
       if (!updatedGame) {
         return res.status(404).json({
           allOK: false,
-          message: `Game with ID ${id} not found`,
+          message: `User with ID ${id} not found`,
           data: null,
         });
       }
       res.status(200).json({
         allOK: true,
-        message: `Game with ID ${id} updated successfully`,
-        data: updatedGame,
+        message: `User with ID ${id} updated successfully`,
+        data: updatedUser,
       });
     } catch (error) {
       res.status(500).json({
         allOK: false,
-        message: "Error updating game",
+        message: "Error updating users",
         data: error.message,
       });
     }
@@ -111,6 +111,11 @@ const gamesController = {
       });
     }
   },
+  const cors = require('cors');
+  app.use(cors({
+    origin: 'http://localhost:4200', // Permite solo tu frontend
+    credentials: true
+  }));
 };
 
 export default usersController;

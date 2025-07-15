@@ -4,6 +4,7 @@ import express from "express";
 import morgan from "morgan";
 import gamesRouter from "./routers/games.js";
 import userRouter from "./routers/user.js";
+import cors from 'cors';
 
 const app = express()
 const host = process.env.HOST
@@ -20,6 +21,10 @@ connectDB()
 
 // middlewares
 
+app.use(cors({
+  origin: 'http://localhost:4200',
+  credentials: true
+}));
 app.use(morgan("dev"));
 app.use(express.json());
 app.use("/games", gamesRouter);
