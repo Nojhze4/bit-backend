@@ -4,7 +4,6 @@ const gamesController = {
   create: async (req, res) => {
     try {
       const { name, consola, genero, descripcion, precio, imageUrl, stock, developer, publisher, releaseYear, rating, multiplayer } = req.body;
-      
       if (!name || !consola || !genero || !descripcion || precio === undefined) {
         return res.status(400).json({
           allOK: false,
@@ -12,7 +11,6 @@ const gamesController = {
           data: null,
         });
       }
-
       if (typeof precio !== 'number' || precio < 0) {
         return res.status(400).json({
           allOK: false,
@@ -20,7 +18,6 @@ const gamesController = {
           data: null,
         });
       }
-
       const newGame = new GameModel({ 
         name, 
         consola, 
@@ -85,7 +82,6 @@ const gamesController = {
   readOne: async (req, res) => {
     try {
       const { id } = req.params;
-      
       if (!id.match(/^[0-9a-fA-F]{24}$/)) {
         return res.status(400).json({
           allOK: false,
@@ -120,7 +116,6 @@ const gamesController = {
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      
       if (!id.match(/^[0-9a-fA-F]{24}$/)) {
         return res.status(400).json({
           allOK: false,
@@ -161,7 +156,6 @@ const gamesController = {
           allOK: false,
           message: "No hay juegos disponibles para actualizar. Primero crea un juego con POST /games",
           data: null,
-          console.log(prueba: "No hay juegos disponibles para actualizar")
         });
       }
 
@@ -184,7 +178,6 @@ const gamesController = {
   delete: async (req, res) => {
     try {
       const { id } = req.params;
-      
       if (!id.match(/^[0-9a-fA-F]{24}$/)) {
         return res.status(400).json({
           allOK: false,

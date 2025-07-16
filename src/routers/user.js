@@ -5,24 +5,9 @@ import jwt from "jsonwebtoken";
 import authMiddleware from "../middleware/auth.js";
 const userRouter = Router();
 
-userRouter.post("/register", async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    if (!email || !password) {
-      return res.status(400).json({ message: "Todos los campos son requeridos" });
-    }
-    const existingUser = await UserModel.findOne({ email });
-    if (existingUser) {
-      return res.status(409).json({ message: "El email ya está registrado" });
-    }
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new UserModel({ email, password: hashedPassword });
-    await newUser.save();
-    res.status(201).json({ message: "Usuario registrado correctamente" });
-  } catch (err) {
-    console.error("Error en registro:", err);
-    res.status(500).json({ message: "Error en el servidor" });
-  }
+
+userRouter.get("/", (req, res) => {
+  res.json({ message: "Users endpoint works!" });
 });
 
 userRouter.post("/login", async (req, res) => {
@@ -59,5 +44,4 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
-prueba = "";
 export default userRouter;
