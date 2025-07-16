@@ -58,4 +58,6 @@ userRouter.post("/login", async (req, res) => {
     res.status(500).json({ message: "Error en el servidor" });
   }
 });
+
+prueba = "";
 export default userRouter;
