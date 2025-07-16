@@ -1,26 +1,25 @@
 import { Schema, model } from "mongoose";
 
-const gameSchema = new Schema(
+const accessorySchema = new Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    consola: {
+    category: {
       type: String,
       required: true,
-      enum: ['PlayStation', 'Xbox', 'Nintendo']
+      enum: ['Controles', 'Audífonos', 'Cargadores', 'Almacenamiento', 'Cables', 'Fundas', 'Otros']
     },
-    genero: {
-      type: String,
-      required: true,
-      enum: ['Acción', 'Aventura', 'RPG', 'Estrategia', 'Deportes', 'Carreras', 'Shooter', 'Plataformas', 'Puzzle', 'Otros']
-    },
-    descripcion: {
+    brand: {
       type: String,
       required: true,
     },
-    precio: {
+    description: {
+      type: String,
+      required: true,
+    },
+    price: {
       type: Number,
       required: true,
     },
@@ -36,23 +35,15 @@ const gameSchema = new Schema(
       type: Boolean,
       default: true,
     },
-    developer: {
+    compatibleWith: [{
       type: String,
-      default: 'Desconocido'
-    },
-    publisher: {
+      enum: ['PlayStation', 'Xbox', 'Nintendo', 'Universal']
+    }],
+    color: {
       type: String,
-      default: 'Desconocido'
+      default: 'Negro'
     },
-    releaseYear: {
-      type: Number,
-    },
-    rating: {
-      type: String,
-      enum: ['E', 'E10+', 'T', 'M', 'AO'],
-      default: 'E'
-    },
-    multiplayer: {
+    wireless: {
       type: Boolean,
       default: false
     }
@@ -60,4 +51,4 @@ const gameSchema = new Schema(
   { versionKey: false, timestamps: true }
 );
 
-export default model("Game", gameSchema);
+export default model("Accessory", accessorySchema); 

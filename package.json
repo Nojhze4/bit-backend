@@ -6,7 +6,9 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "seed:home": "node src/scripts/seedHomeData.js",
+    "seed:all": "node src/scripts/seedAllData.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +22,13 @@
   },
   "homepage": "https://github.com/Nojhze4/bit-backend#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
     "dotenv": "^17.0.1",
     "express": "^5.1.0",
-    "mongoose": "^8.16.1"
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.1",
+    "multer": "^2.0.1"
   },
   "devDependencies": {
     "morgan": "^1.10.0",

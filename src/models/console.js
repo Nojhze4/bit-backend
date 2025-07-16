@@ -1,26 +1,25 @@
 import { Schema, model } from "mongoose";
 
-const gameSchema = new Schema(
+const consoleSchema = new Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    consola: {
+    brand: {
       type: String,
       required: true,
-      enum: ['PlayStation', 'Xbox', 'Nintendo']
+      enum: ['PlayStation', 'Xbox', 'Nintendo', 'Otros']
     },
-    genero: {
-      type: String,
-      required: true,
-      enum: ['Acción', 'Aventura', 'RPG', 'Estrategia', 'Deportes', 'Carreras', 'Shooter', 'Plataformas', 'Puzzle', 'Otros']
-    },
-    descripcion: {
+    model: {
       type: String,
       required: true,
     },
-    precio: {
+    description: {
+      type: String,
+      required: true,
+    },
+    price: {
       type: Number,
       required: true,
     },
@@ -36,28 +35,18 @@ const gameSchema = new Schema(
       type: Boolean,
       default: true,
     },
-    developer: {
-      type: String,
-      default: 'Desconocido'
-    },
-    publisher: {
-      type: String,
-      default: 'Desconocido'
-    },
+    features: [{
+      type: String
+    }],
     releaseYear: {
       type: Number,
     },
-    rating: {
+    color: {
       type: String,
-      enum: ['E', 'E10+', 'T', 'M', 'AO'],
-      default: 'E'
-    },
-    multiplayer: {
-      type: Boolean,
-      default: false
+      default: 'Negro'
     }
   },
   { versionKey: false, timestamps: true }
 );
 
-export default model("Game", gameSchema);
+export default model("Console", consoleSchema); 

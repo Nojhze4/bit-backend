@@ -1,6 +1,6 @@
-import GameModel from "../models/games.js";
+import UserModel from "../models/user.js";
 
-const gamesController = {
+const usersController = {
   create: async (req, res) => {
     try {
       const { username, email, password } = req.body;
@@ -22,7 +22,7 @@ const gamesController = {
 
   readAll: async (req, res) => {
     try {
-      const games = await GameModel.find();
+      const users = await UserModel.find();
       res.status(200).json({
         allOK: true,
         message: "All users retrieved successfully",
@@ -40,8 +40,8 @@ const gamesController = {
   readOne: async (req, res) => {
     try {
       const { id } = req.params;
-      const game = await GameModel.findById(id);
-      if (!game) {
+      const user = await UserModel.findById(id);
+      if (!user) {
         return res.status(404).json({
           allOK: false,
           message: `User with ID ${id} not found`,
@@ -65,23 +65,23 @@ const gamesController = {
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const updatedGame = await GameModel.findByIdAndUpdate(id, req.body, { new: true });
-      if (!updatedGame) {
+      const updatedUser = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
+      if (!updatedUser) {
         return res.status(404).json({
           allOK: false,
-          message: `Game with ID ${id} not found`,
+          message: `User with ID ${id} not found`,
           data: null,
         });
       }
       res.status(200).json({
         allOK: true,
-        message: `Game with ID ${id} updated successfully`,
-        data: updatedGame,
+        message: `User with ID ${id} updated successfully`,
+        data: updatedUser,
       });
     } catch (error) {
       res.status(500).json({
         allOK: false,
-        message: "Error updating game",
+        message: "Error updating user",
         data: error.message,
       });
     }
@@ -90,8 +90,8 @@ const gamesController = {
   delete: async (req, res) => {
     try {
       const { id } = req.params;
-      const gameDeleted = await GameModel.findByIdAndDelete(id);
-      if (!gameDeleted) {
+      const userDeleted = await UserModel.findByIdAndDelete(id);
+      if (!userDeleted) {
         return res.status(404).json({
           allOK: false,
           message: `User with ID ${id} not found`,
@@ -110,7 +110,7 @@ const gamesController = {
         data: error.message,
       });
     }
-  },
+  }
 };
 
 export default usersController;
