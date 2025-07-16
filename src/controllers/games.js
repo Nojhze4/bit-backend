@@ -161,6 +161,7 @@ const gamesController = {
           allOK: false,
           message: "No hay juegos disponibles para actualizar. Primero crea un juego con POST /games",
           data: null,
+          console.log(prueba: "No hay juegos disponibles para actualizar")
         });
       }
 
