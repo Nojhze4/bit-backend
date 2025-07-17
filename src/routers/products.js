@@ -44,6 +44,7 @@ productsRouter.get("/consoles", (req, res) => consoleController.readAll(req, res
 productsRouter.post("/games", (req, res) => gamesController.create(req, res));
 productsRouter.post("/consoles", (req, res) => consoleController.create(req, res));
 productsRouter.post("/accessories", (req, res) => accessoryController.create(req, res));
+productsRouter.delete("/consoles/:id", (req, res) => consoleController.delete(req, res));
 
 productsRouter.get("/:id", async (req, res) => {
   try {
