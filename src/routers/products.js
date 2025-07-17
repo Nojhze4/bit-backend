@@ -1,4 +1,7 @@
 import { Router } from 'express';
+import GameModel from '../models/games.js';
+import AccessoryModel from '../models/accessory.js';
+import ConsoleModel from '../models/console.js';
 import gamesController from '../controllers/games.js';
 import accessoryController from '../controllers/accessory.js';
 import consoleController from '../controllers/console.js';
@@ -8,15 +11,15 @@ const productsRouter = Router();
 productsRouter.get("/", async (req, res) => {
   try {
     const [games, accessories, consoles] = await Promise.all([
-      gamesController.readAll({ ...req }, { ...res, json: (data) => data }),
-      accessoryController.readAll({ ...req }, { ...res, json: (data) => data }),
-      consoleController.readAll({ ...req }, { ...res, json: (data) => data }),
+      GameModel.find({ isActive: true }),
+      AccessoryModel.find({ isActive: true }),
+      ConsoleModel.find({ isActive: true }),
     ]);
 
     let products = [
-      ...(games?.data || []),
-      ...(accessories?.data || []),
-      ...(consoles?.data || []),
+      ...games,
+      ...accessories,
+      ...consoles,
     ];
     products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
@@ -38,6 +41,9 @@ productsRouter.get("/", async (req, res) => {
 productsRouter.get("/games", (req, res) => gamesController.readAll(req, res));
 productsRouter.get("/accessories", (req, res) => accessoryController.readAll(req, res));
 productsRouter.get("/consoles", (req, res) => consoleController.readAll(req, res));
+productsRouter.post("/games", (req, res) => gamesController.create(req, res));
+productsRouter.post("/consoles", (req, res) => consoleController.create(req, res));
+productsRouter.post("/accessories", (req, res) => accessoryController.create(req, res));
 
 productsRouter.get("/:id", async (req, res) => {
   try {

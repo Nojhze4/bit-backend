@@ -281,7 +281,77 @@ const gamesController = {
         data: error.message,
       });
     }
-  }
+  },
+  getRecent: (req, res) => {
+    res.status(501).json({
+      allOK: false,
+      message: "Función getRecent no implementada todavía",
+      data: null,
+    });
+  },
+  search: (req, res) => {
+    res.status(501).json({
+      allOK: false,
+      message: "Función search no implementada todavía",
+      data: null,
+    });
+  },
+  getByDeveloper: (req, res) => {
+    res.status(501).json({
+      allOK: false,
+      message: "Función getByDeveloper no implementada todavía",
+      data: null,
+    });
+  },
+  getByPublisher: (req, res) => {
+    res.status(501).json({
+      allOK: false,
+      message: "Función getByPublisher no implementada todavía",
+      data: null,
+    });
+  },
+  getByReleaseYear: (req, res) => {
+    res.status(501).json({
+      allOK: false,
+      message: "Función getByReleaseYear no implementada todavía",
+      data: null,
+    });
+  },
+  getByRating: (req, res) => {
+    res.status(501).json({
+      allOK: false,
+      message: "Función getByRating no implementada todavía",
+      data: null,
+    });
+  },
+  getActive: (req, res) => {
+    res.status(501).json({
+      allOK: false,
+      message: "Función getActive no implementada todavía",
+      data: null,
+    });
+  },
+  getInactive: (req, res) => {
+    res.status(501).json({
+      allOK: false,
+      message: "Función getInactive no implementada todavía",
+      data: null,
+    });
+  },
+  activate: (req, res) => {
+    res.status(501).json({
+      allOK: false,
+      message: "Función activate no implementada todavía",
+      data: null,
+    });
+  },
+  deactivate: (req, res) => {
+    res.status(501).json({
+      allOK: false,
+      message: "Función deactivate no implementada todavía",
+      data: null,
+    });
+  },
 };
 
 export default gamesController;

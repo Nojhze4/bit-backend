@@ -44,4 +44,11 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
+userRouter.get('/verify', authMiddleware, (req, res) => {
+  res.json({
+    message: 'Token válido',
+    user: req.user
+  });
+});
+
 export default userRouter;
