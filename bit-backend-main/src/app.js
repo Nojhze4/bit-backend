@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
 
 connectDB()
 
+// middlewares
 app.use(cors({
   origin: 'http://localhost:4200',
   credentials: true

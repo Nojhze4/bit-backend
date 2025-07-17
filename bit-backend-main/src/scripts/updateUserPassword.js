@@ -8,18 +8,18 @@ const run = async () => {
   try {
     await mongoose.connect(MONGODB_URI);
     const hash = await bcrypt.hash("Demo123", 10);
-    const email = "pruebas@demo.com";
-    await UserModel.deleteOne({ email });
-    const user = new UserModel({
-      username: "Usuario de Prueba",
-      email,
-      password: hash
-    });
-    await user.save();
-    console.log("Usuario de prueba creado correctamente: pruebas@demo.com / Demo123");
+    const result = await UserModel.updateOne(
+      { email: "pruebas@demo.com" },
+      { $set: { password: hash } }
+    );
+    if (result.modifiedCount > 0) {
+      console.log("Contraseña actualizada y encriptada correctamente.");
+    } else {
+      console.log("No se encontró el usuario o la contraseña ya estaba encriptada.");
+    }
     process.exit(0);
   } catch (error) {
-    console.error("Error creando el usuario de prueba:", error);
+    console.error("Error actualizando la contraseña:", error);
     process.exit(1);
   }
 };

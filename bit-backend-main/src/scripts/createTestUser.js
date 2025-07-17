@@ -9,7 +9,9 @@ const run = async () => {
     await mongoose.connect(MONGODB_URI);
     const hash = await bcrypt.hash("Demo123", 10);
     const email = "pruebas@demo.com";
+    // Elimina si ya existe
     await UserModel.deleteOne({ email });
+    // Crea el usuario
     const user = new UserModel({
       username: "Usuario de Prueba",
       email,
